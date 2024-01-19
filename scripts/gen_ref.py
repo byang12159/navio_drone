@@ -13,8 +13,8 @@ parser.add_argument('--T', type=float, default=30., help='Time horizon of the cu
 parser.add_argument('--save', type=str, help='Filename to save the data.')
 parser.add_argument('--type', type=str, default='lemniscate', help='Type of curve.')
 parser.add_argument('--vis', dest='vis', action='store_true', help='Visualize the curve.')
-parser.set_defaults(vis=False)
-parser.add_argument('--gen_args', nargs='+', default=[], type=float, help='Arguments to the curve generator.')
+parser.set_defaults(vis=True)
+parser.add_argument('--gen_args', nargs='+', default=[1.0,1.0,10.0], type=float, help='Arguments to the curve generator.')
 args = parser.parse_args()
 
 curve_gen = importlib.import_module('DroneExperiments.core.refs.'+args.type)

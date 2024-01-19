@@ -1,0 +1,6 @@
+# run vicon in mavproxy (everytime restart mavproxy)
+module load vicon 
+vicon start
+set streamrate 20
+
+vicon set host 192.168.1.4

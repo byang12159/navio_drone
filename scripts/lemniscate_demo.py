@@ -30,7 +30,6 @@ parser.add_argument('--vis', dest='vis', action='store_true', help='Visualize th
 parser.set_defaults(vis=True)
 parser.add_argument('--gen_args', nargs='+', default=[10,1,1], type=float, help='Arguments to the curve generator.')
 parser.set_defaults(oneshot=False)
-parser.add_argument('--saveresult', type=str, help='filename to save the data.')
 
 args = parser.parse_args()
 
