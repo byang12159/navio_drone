@@ -4,8 +4,17 @@ import argparse
 import importlib
 import pickle5 as pickle
 from matplotlib import pyplot as plt
-from DroneExperiments.core.refs.gen_xref_uref_from_xyz import gen_xref_uref_from_xyz
-from DroneExperiments.core.constants import dt, xy_Tc, z_Tc
+import os
+
+# # Get the absolute path of the current script
+# current_script_path = os.path.abspath(__file__)
+# # Set the repository's upper-level path
+# repository_path = os.path.dirname(os.path.dirname(current_script_path))
+# print(repository_path)
+
+from navio_drone.core.constants import dt, xy_Tc, z_Tc
+from navio_drone.core.refs.gen_xref_uref_from_xyz import gen_xref_uref_from_xyz
+
 from functools import partial
 
 parser = argparse.ArgumentParser(description="")
