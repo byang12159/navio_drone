@@ -6,11 +6,12 @@ import pickle5 as pickle
 from matplotlib import pyplot as plt
 import os
 
-# # Get the absolute path of the current script
-# current_script_path = os.path.abspath(__file__)
-# # Set the repository's upper-level path
-# repository_path = os.path.dirname(os.path.dirname(current_script_path))
-# print(repository_path)
+import sys
+parent_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..','..'))
+sys.path.append(parent_directory)
+
+for path in sys.path:
+    print(path)
 
 from navio_drone.core.constants import dt, xy_Tc, z_Tc
 from navio_drone.core.refs.gen_xref_uref_from_xyz import gen_xref_uref_from_xyz
@@ -23,10 +24,10 @@ parser.add_argument('--save', type=str, help='Filename to save the data.')
 parser.add_argument('--type', type=str, default='lemniscate', help='Type of curve.')
 parser.add_argument('--vis', dest='vis', action='store_true', help='Visualize the curve.')
 parser.set_defaults(vis=True)
-parser.add_argument('--gen_args', nargs='+', default=[1.0,1.0,10.0], type=float, help='Arguments to the curve generator.')
+parser.add_argument('--gen_args', nargs='+', default=[10,1,1], type=float, help='Arguments to the curve generator.')
 args = parser.parse_args()
 
-curve_gen = importlib.import_module('DroneExperiments.core.refs.'+args.type)
+curve_gen = importlib.import_module('navio_drone.core.refs.'+args.type)
 
 def gen_xref_uref(xyz):
     xyz = partial(xyz, args.gen_args)

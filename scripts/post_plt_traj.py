@@ -4,8 +4,6 @@ import argparse
 import sys
 import pickle5 as pickle
 
-
-
 parser = argparse.ArgumentParser(description="")
 parser.add_argument('--traj', type=str, help='filename to the actual trajectories.')
 parser.add_argument('--save', type=bool, default=False, help='boolean to save figure')
@@ -28,6 +26,8 @@ vz = xs[:, 5]
 ax = xs[:, 6]
 ay = xs[:, 7]
 az = xs[:, 8]
+print(ax.shape)
+print(type(ax))
 
 ref_x = xstars[:, 0]
 ref_y = xstars[:, 1]
@@ -70,6 +70,7 @@ timedv.plot(real_t, ref_vz, label='ref_vz')
 timedv.legend()
 timedv.set_title("Velocity")
 
+
 timeda.plot(real_t, ax, label='ax')
 timeda.plot(real_t, ay, label='ay')
 timeda.plot(real_t, az, label='az')
@@ -102,4 +103,20 @@ plt.tight_layout()
 if args.save:
     plt.savefig("traj"+args.traj+".png")
 
+plt.show()
+
+
+# Create a 3D figure
+fig = plt.figure()
+axes = fig.add_subplot(111, projection='3d')
+
+print(type(ax))
+x = np.zeros(len(ax))
+y = np.zeros(len(ay))
+z = np.zeros(len(az))
+
+# Plot 3D vectors using ax.quiver
+axes.quiver(x, y, z, ax,ay,az, length=0.1, normalize=True, color='b',linewidth=0.5,arrow_length_ratio=0.1)
+
+# Show the plot
 plt.show()

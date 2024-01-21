@@ -1,6 +1,6 @@
 import numpy as np
-from DroneExperiments.sysid.ExcitationGenerator import translate_x
-from DroneExperiments.core.constants import xy_Tc, z_Tc
+from navio_drone.sysid.ExcitationGenerator import translate_x
+from navio_drone.core.constants import xy_Tc, z_Tc
 
 def gen_xref_uref_from_xyz(xyz, T, dt, translate=True):
     downsample_mult = 50

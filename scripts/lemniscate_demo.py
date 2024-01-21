@@ -7,11 +7,11 @@ import numpy as np
 import importlib
 import pickle5 as pickle
 import argparse
-from DroneExperiments.core.constants import dt
-from DroneExperiments.ros.DroneInterface import Drone, distance
-from DroneExperiments.C3M.models.model_navio2_numpy import get_controller_wrapper
-from DroneExperiments.core.refs.gen_xref_uref_from_xyz import gen_xref_uref_from_xyz
-from DroneExperiments.core.refs import gate_ref
+from navio_drone.core.constants import dt
+from navio_drone.ros.DroneInterface import Drone, distance
+from navio_drone.C3M.models.model_navio2_numpy import get_controller_wrapper
+from navio_drone.core.refs.gen_xref_uref_from_xyz import gen_xref_uref_from_xyz
+from navio_drone.core.refs import gate_ref
 from geometry_msgs.msg import PoseArray
 from functools import partial
 from threading import Lock
@@ -33,7 +33,7 @@ parser.set_defaults(oneshot=False)
 
 args = parser.parse_args()
 
-curve_gen = importlib.import_module('DroneExperiments.core.refs.'+args.type)
+curve_gen = importlib.import_module('navio_drone.core.refs.'+args.type)
 
 
 new_xref = None
