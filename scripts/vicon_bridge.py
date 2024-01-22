@@ -50,7 +50,7 @@ def main():
             data.data[-1] = now
             pub.publish(data)
 
-            print("Data",data.data[0],data.data[1],data.data[2])
+            print("Data",data.data)
             datastorage.append(data)
 
         elif msg.get_type() == 'ATT_POS_MOCAP':

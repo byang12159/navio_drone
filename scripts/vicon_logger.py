@@ -57,6 +57,7 @@ def vlog():
             pub.publish(data)
 
             datastorage.append(data)
+            print("getting")
 
         elif msg.get_type() == 'ATT_POS_MOCAP':
             pass
@@ -67,7 +68,7 @@ if __name__ == '__main__':
     datastorage = vlog()
 
     if args.save is not None:
-        with open('f{args.save}.pkl','wb') as file:
+        with open(f'{args.save}.pkl','wb') as file:
             pickle.dump(datastorage,file)
         print(f"saved data to {args.save}")
     else:
